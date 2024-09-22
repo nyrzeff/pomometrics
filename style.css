@@ -1,0 +1,25 @@
+html {
+   background-color: black;
+   color: white;
+}
+
+.container {
+   display: grid;
+   width: 50vw;
+   margin: auto;
+   text-align: center;
+   place-items: center;
+}
+
+.widget__header {
+}
+
+label {
+   font-weight: bold;
+}
+
+button {
+   width: 15em; 
+   align-self: center;
+   background: red;
+}
