@@ -25,10 +25,7 @@ label {
    max-width: 10rem;
 }
 
-input {
-   /* max-width: 75%; */
-}
-
+#start-and-end-times,
 #break-durations {
    white-space: nowrap;
 }
