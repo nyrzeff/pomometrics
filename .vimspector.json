@@ -1,0 +1,19 @@
+{
+  "configurations": {
+    "firefox": {
+      "adapter": "firefox",
+      "breakpoints": {
+         "exception": {
+            "all": "N",
+            "uncaught": "N"
+         }
+      },
+      "configuration": {
+        "request": "launch",
+        "url": "http://localhost:3000/",
+        "webRoot": "${workspaceRoot}/www",
+        "reAttach": true
+      }
+    }
+  }
+}
