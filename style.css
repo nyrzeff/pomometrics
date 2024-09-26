@@ -25,7 +25,6 @@ label {
    max-width: 10rem;
 }
 
-#start-and-end-times,
 #break-durations {
    white-space: nowrap;
 }
