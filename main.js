@@ -1,3 +1,8 @@
+const calculateButton = document.getElementById("calculate-button");
+calculateButton.addEventListener("click", () => {
+   calculate();
+});
+
 function calculate() {
    const totalBlockDuration = parseInt(document.getElementById("total-block-duration").value);
    const sessionDuration = parseInt(document.getElementById("session-duration").value);

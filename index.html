@@ -6,15 +6,14 @@
       <link rel="stylesheet" href="style.css" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Pomometrics</title>
-      <script type="text/javascript" src="main.js"></script>
    </head>
    <body>
       <header class="widget__header">
          <h1>Pomometrics</h1>
          <h2>The ultimate Pomodoro technique calculator</h2>
       </header>
-      <form class="container">
-         <div>
+      <form class="form-container">
+         <div id="start-time-container">
             <label for="start-time">Start time</label>
             <input
                   type="time"
@@ -23,7 +22,7 @@
                   value="08:00"
                   />
          </div>
-         <div>
+         <div id="end-time-container">
             <label for="end-time">End time</label>
             <input
                   type="time"
@@ -50,7 +49,7 @@
                value="25"
                />
          <label for="break-durations">Break durations</label>
-         <div id="break-durations">
+         <div id="breaks-container">
             <input
                   type="text"
                   inputmode="numeric"
@@ -77,8 +76,9 @@
                placeholder="Sessions per cycle"
                value="4"
                />
-         <button onclick="calculate()">Calculate</button>
+         <button id="calculate-button" type="button">Calculate</button>
       </form>
+      <script type="module" src="main.js"></script>
    </body>
 </html>
 
