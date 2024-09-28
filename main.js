@@ -1,3 +1,5 @@
+import Chart from 'chart.js/auto';
+
 const calculateButton = document.getElementById("calculate-button");
 calculateButton.addEventListener("click", () => {
    calculate();
@@ -25,6 +27,8 @@ function calculate() {
    const totalFocusTime = focusTimePerCycle * numberOfCycles;
    const totalBreakTime = breakTimePerCycle * numberOfCycles;
    console.log(`Total focus time: ${totalFocusTime}\nTotal break time: ${totalBreakTime}`);
+
+   createChart(totalFocusTime, totalBreakTime);
 }
 
 function calculateEndTime(startTime, durationMinutes) {
@@ -38,4 +42,29 @@ function calculateEndTime(startTime, durationMinutes) {
   const endMinutes = endDate.getMinutes().toString().padStart(2, '0');
   
   return `${endHours}:${endMinutes}`;
+}
+
+function createChart(totalFocusTime, totalBreakTime) {
+   const xValues = ["Focus time", "Break time"];
+   const yValues = [totalFocusTime, totalBreakTime];
+   const barColors = ["green", "blue"];
+
+   const ctx = document.getElementById("pomodoro-chart");
+
+   new Chart(ctx, {
+      type: "doughnut",
+      data: {
+         labels: xValues,
+         datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+         }]
+      },
+      options: {
+         title: {
+            display: true,
+            text: "Total focus and break time distribution"
+         }
+      }
+   });
 }
