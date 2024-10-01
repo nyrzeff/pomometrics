@@ -24,8 +24,8 @@ function calculate() {
    const breakTimePerCycle = totalCycleDuration - focusTimePerCycle;
    console.log(`Focus time per cycle: ${focusTimePerCycle}\nBreak time per cycle: ${breakTimePerCycle}`);
 
-   const totalFocusTime = focusTimePerCycle * numberOfCycles;
-   const totalBreakTime = breakTimePerCycle * numberOfCycles;
+   const totalFocusTime = floorToMultipleOf(focusTimePerCycle * numberOfCycles, sessionDuration);
+   const totalBreakTime = floorToMultipleOf(breakTimePerCycle * numberOfCycles, shortBreakDuration);
    console.log(`Total focus time: ${totalFocusTime}\nTotal break time: ${totalBreakTime}`);
 
    createChart(totalFocusTime, totalBreakTime);
@@ -67,4 +67,7 @@ function createChart(totalFocusTime, totalBreakTime) {
          }
       }
    });
+
+function floorToMultipleOf(number, multipleOf) {
+   return Math.floor(number / multipleOf) * multipleOf;
 }
