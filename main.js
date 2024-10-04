@@ -1,73 +1,60 @@
-import Chart from 'chart.js/auto';
+import * as helper from "./helper.mjs";
+
+const totalBlockDurationMinutes = parseInt(
+  document.getElementById("total-block-duration").value,
+);
+
+const sessionDurationMinutes = parseInt(
+  document.getElementById("session-duration").value,
+);
+
+const shortBreakDuration = parseInt(
+  document.getElementById("short-break-duration").value,
+);
+
+const longBreakDuration = parseInt(
+  document.getElementById("long-break-duration").value,
+);
+
+const sessionsPerCycle = parseInt(
+  document.getElementById("sessions-per-cycle").value,
+);
+
+const startTime = document.getElementById("start-time").value;
 
 const calculateButton = document.getElementById("calculate-button");
+
 calculateButton.addEventListener("click", () => {
-   calculate();
+  calculate();
 });
 
 function calculate() {
-   const totalBlockDuration = parseInt(document.getElementById("total-block-duration").value);
-   const sessionDuration = parseInt(document.getElementById("session-duration").value);
-   const shortBreakDuration = parseInt(document.getElementById("short-break-duration").value);
-   const longBreakDuration = parseInt(document.getElementById("long-break-duration").value);
-   const sessionsPerCycle = parseInt(document.getElementById("sessions-per-cycle").value);
-   const startTime = document.getElementById("start-time").value;
+  const endTime = helper.calculateEndTime(startTime, totalBlockDurationMinutes);
 
-   const endTime = calculateEndTime(startTime, totalBlockDuration)
-   console.log(`end time is ${endTime}`);
 
-   const totalCycleDuration = ((sessionDuration + shortBreakDuration) * sessionsPerCycle) - shortBreakDuration + longBreakDuration;
-   const numberOfCycles = totalBlockDuration / totalCycleDuration;
-   console.log(`Cycle duration: ${totalCycleDuration}\nNumber of cycles: ${numberOfCycles}`);
+  const cycleDurationMinutes =
+    (sessionDurationMinutes + shortBreakDuration) * sessionsPerCycle -
+    shortBreakDuration +
+    longBreakDuration;
 
-   const focusTimePerCycle = sessionDuration * sessionsPerCycle;
-   const breakTimePerCycle = totalCycleDuration - focusTimePerCycle;
-   console.log(`Focus time per cycle: ${focusTimePerCycle}\nBreak time per cycle: ${breakTimePerCycle}`);
+  const cycleCoefficient = totalBlockDurationMinutes / cycleDurationMinutes;
 
-   const totalFocusTime = floorToMultipleOf(focusTimePerCycle * numberOfCycles, sessionDuration);
-   const totalBreakTime = floorToMultipleOf(breakTimePerCycle * numberOfCycles, shortBreakDuration);
-   console.log(`Total focus time: ${totalFocusTime}\nTotal break time: ${totalBreakTime}`);
+  const focusTimePerCycle = sessionDurationMinutes * sessionsPerCycle;
+  const breakTimePerCycle = cycleDurationMinutes - focusTimePerCycle;
 
-   createChart(totalFocusTime, totalBreakTime);
+  const totalFocusTime = helper.floorToMultipleOf(
+    focusTimePerCycle * cycleCoefficient,
+    sessionDurationMinutes,
+  );
+
+  const totalBreakTime = helper.floorToMultipleOf(
+    breakTimePerCycle * cycleCoefficient,
+    shortBreakDuration,
+  );
 }
 
-function calculateEndTime(startTime, durationMinutes) {
-  const [hours, minutes] = startTime.split(':').map(Number);
-  const startDate = new Date();
-  startDate.setHours(hours, minutes, 0, 0);
 
-  const endDate = new Date(startDate.getTime() + durationMinutes * 60000);
 
-  const endHours = endDate.getHours().toString().padStart(2, '0');
-  const endMinutes = endDate.getMinutes().toString().padStart(2, '0');
-  
-  return `${endHours}:${endMinutes}`;
 }
 
-function createChart(totalFocusTime, totalBreakTime) {
-   const xValues = ["Focus time", "Break time"];
-   const yValues = [totalFocusTime, totalBreakTime];
-   const barColors = ["green", "blue"];
-
-   const ctx = document.getElementById("pomodoro-chart");
-
-   new Chart(ctx, {
-      type: "doughnut",
-      data: {
-         labels: xValues,
-         datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-         }]
-      },
-      options: {
-         title: {
-            display: true,
-            text: "Total focus and break time distribution"
-         }
-      }
-   });
-
-function floorToMultipleOf(number, multipleOf) {
-   return Math.floor(number / multipleOf) * multipleOf;
 }

@@ -1,57 +1,44 @@
 html {
-   background-color: black;
-   color: white;
-   font-size: 1.7rem;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
 }
 
-.form-container {
-   display: grid;
-   grid-template-columns: 50% 50%; 
-   /* grid-template-rows: repeat(7, 1fr); */
-   gap: 10px;
-   /* height: 50vh; */
-   width: 35vw;
-   /* place-content: center; */
-   /* justify-items: center; */
-   align-items: center;
-   margin: auto;
-   /* padding: 2rem; */
+#form-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+  width: 35vw;
+  align-items: center;
+  margin: auto;
 }
 
-.widget__header {
-   text-align: center;
+#widget__header {
+  text-align: center;
 }
 
 #start-time-container,
 #end-time-container {
-   justify-self: center;
-   align-self: center;
-}
-
-/* label { */
-/*    font-weight: bold; */
-/*    /1* max-width: 10rem; *1/ */
-/* } */
-
-input {
-   /* max-width: fit-content; */
+  justify-self: center;
+  align-self: center;
 }
 
 #breaks-container {
-   display: flex;
-   gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 #short-break-duration,
 #long-break-duration {
-   flex-shrink: 1;
-   min-width: 0px;
-   width: 50%; 
+  flex-shrink: 1;
+  min-width: 0px;
+  width: 50%;
 }
 
 button {
-   grid-column: 1 / span 2;
-   place-self: center;
-   margin-top: 1rem;
-   width: 25%;
+  grid-column: 1 / span 2;
+  place-self: center;
+  margin-top: 1rem;
+  width: 25%;
+}
 }

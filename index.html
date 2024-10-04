@@ -8,11 +8,11 @@
       <title>Pomometrics</title>
    </head>
    <body>
-      <header class="widget__header">
+      <header id="widget__header">
          <h1>Pomometrics</h1>
          <h2>The ultimate Pomodoro technique calculator</h2>
       </header>
-      <form class="form-container">
+      <form id="form-container">
          <div id="start-time-container">
             <label for="start-time">Start time</label>
             <input
@@ -78,8 +78,6 @@
                />
          <button id="calculate-button" type="button">Calculate</button>
       </form>
-      <div class="chart-container">
-         <canvas id="pomodoro-chart" width="200px" height="100px"></canvas>
       </div>
       <script type="module" src="main.js"></script>
    </body>
