@@ -1,85 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-      <link rel="stylesheet" href="style.css" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Pomometrics</title>
-   </head>
-   <body>
-      <header id="widget__header">
-         <h1>Pomometrics</h1>
-         <h2>The ultimate Pomodoro technique calculator</h2>
-      </header>
-      <form id="form-container">
-         <div id="start-time-container">
-            <label for="start-time">Start time</label>
-            <input
-                  type="time"
-                  id="start-time"
-                  name="start-time"
-                  value="08:00"
-                  />
-         </div>
-         <div id="end-time-container">
-            <label for="end-time">End time</label>
-            <input
-                  type="time"
-                  id="end-time"
-                  name="end-time"
-                  value="15:00"
-                  />
-         </div>
-         <label for="total-block-duration">Total block duration</label>
-         <input
-               type="text"
-               inputmode="numeric"
-               id="total-block-duration"
-               name="total-block-duration"
-               value="135"
-               />
-         <label for="session-duration">Session duration</label>
-         <input
-               type="text"
-               inputmode="numeric"
-               id="session-duration"
-               name="session-duration"
-               placeholder="Duration of each session"
-               value="25"
-               />
-         <label for="break-durations">Break durations</label>
-         <div id="breaks-container">
-            <input
-                  type="text"
-                  inputmode="numeric"
-                  id="short-break-duration"
-                  name="short-break-duration"
-                  placeholder="Duration of a short break"
-                  value="5"
-                  />
-            <input
-                  type="text"
-                  inputmode="numeric"
-                  id="long-break-duration"
-                  name="long-break-duration"
-                  placeholder="Duration of a long break"
-                  value="20"
-                  />
-         </div>
-         <label for="sessions-per-cycle">Sessions per cycle</label>
-         <input
-               type="text"
-               inputmode="numeric"
-               id="sessions-per-cycle"
-               name="sessions-per-cycle"
-               placeholder="Sessions per cycle"
-               value="4"
-               />
-         <button id="calculate-button" type="button">Calculate</button>
-      </form>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomometrics</title>
+  </head>
+  <body>
+    <header id="widget__header">
+      <h1>Pomometrics</h1>
+      <h2>The ultimate Pomodoro technique calculator</h2>
+    </header>
+    <form id="form-container">
+      <div id="start-time-container">
+        <label for="start-time">Start time</label>
+        <input type="time" id="start-time" name="start-time" value="08:00" />
       </div>
-      <script type="module" src="main.js"></script>
-   </body>
+      <div id="end-time-container">
+        <label for="end-time">End time</label>
+        <input type="time" id="end-time" name="end-time" value="15:00" />
+      </div>
+      <label for="total-block-duration">Total block duration</label>
+      <input
+        type="text"
+        inputmode="numeric"
+        id="total-block-duration"
+        name="total-block-duration"
+        value="135"
+      />
+      <label for="session-duration">Session duration</label>
+      <input
+        type="text"
+        inputmode="numeric"
+        id="session-duration"
+        name="session-duration"
+        placeholder="Duration of each session"
+        value="25"
+      />
+      <label for="break-durations">Break durations</label>
+      <div id="breaks-container">
+        <input
+          type="text"
+          inputmode="numeric"
+          id="short-break-duration"
+          name="short-break-duration"
+          placeholder="Duration of a short break"
+          value="5"
+        />
+        <input
+          type="text"
+          inputmode="numeric"
+          id="long-break-duration"
+          name="long-break-duration"
+          placeholder="Duration of a long break"
+          value="20"
+        />
+      </div>
+      <label for="sessions-per-cycle">Sessions per cycle</label>
+      <input
+        type="text"
+        inputmode="numeric"
+        id="sessions-per-cycle"
+        name="sessions-per-cycle"
+        placeholder="Sessions per cycle"
+        value="4"
+      />
+      <button id="calculate-button" type="button">Calculate</button>
+    </form>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
-

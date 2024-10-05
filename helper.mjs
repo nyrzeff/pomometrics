@@ -15,4 +15,4 @@ function floorToMultipleOf(number, multipleOf) {
   return Math.floor(number / multipleOf) * multipleOf;
 }
 
-export {calculateEndTime, floorToMultipleOf};
+export { calculateEndTime, floorToMultipleOf };
