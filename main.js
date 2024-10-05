@@ -31,7 +31,6 @@ calculateButton.addEventListener("click", () => {
 function calculate() {
   const endTime = helper.calculateEndTime(startTime, totalBlockDurationMinutes);
 
-
   const cycleDurationMinutes =
     (sessionDurationMinutes + shortBreakDuration) * sessionsPerCycle -
     shortBreakDuration +
@@ -51,10 +50,4 @@ function calculate() {
     breakTimePerCycle * cycleCoefficient,
     shortBreakDuration,
   );
-}
-
-
-
-}
-
 }
