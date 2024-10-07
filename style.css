@@ -41,3 +41,17 @@ button {
   margin-top: 1rem;
   width: 25%;
 }
+
+#visualization-container {
+  display: flex;
+  gap: 10px;
+  width: 100vw;
+  height: 5vw;
+  place-content: center;
+}
+
+#svg-node {
+  display: grid;
+  font-size: 10px;
+  stroke: purple;
+}

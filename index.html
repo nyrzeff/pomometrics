@@ -68,6 +68,23 @@
       />
       <button id="calculate-button" type="button">Calculate</button>
     </form>
+    <div id="visualization-container">
+      <svg
+        id="svg-node"
+        viewBox="-50 0 1100 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <text id="svg-start-time" x="-14" y="28"></text>
+        <polyline
+          id="polyline"
+          points="0,0 0,20 0,10 1000,10 1000,0 1000,20"
+          fill="none"
+          stroke="white"
+          stroke-width="1"
+        ></polyline>
+        <text id="svg-end-time" x="988" y="28"></text>
+      </svg>
+    </div>
     <script type="module" src="main.js"></script>
   </body>
 </html>
