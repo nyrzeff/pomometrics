@@ -90,7 +90,8 @@ function createSections(
 
   for (let i = 1; x + cycleChunks < 1000; ++i) {
     for (let j = 1; j <= sessionsPerCycle; ++j) {
-      x = sessionChunks * (smallestXIncrement * j);
+      x =
+        sessionChunks * (smallestXIncrement * j) + shortBreakDuration * (j - 1);
 
       console.log(`x is ${x}\tj is ${j}\n`);
 
