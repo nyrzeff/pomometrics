@@ -1,7 +1,7 @@
 html {
   background-color: black;
   color: white;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 #form-container {
@@ -48,10 +48,4 @@ button {
   width: 100vw;
   height: 5vw;
   place-content: center;
-}
-
-#svg-node {
-  display: grid;
-  font-size: 10px;
-  stroke: purple;
 }
