@@ -1,3 +1,4 @@
+import Chart from "chart.js/auto";
 import * as helper from "./helper.mjs";
 
 const totalBlockDurationMinutes = parseInt(
@@ -45,14 +46,59 @@ function calculate() {
     sessionDurationMinutes,
   );
 
-  const totalBreakTime = helper.floorToMultipleOf(
+  const totalShortBreakTime = helper.floorToMultipleOf(
     breakTimePerCycle * cycleCoefficient,
     shortBreakDuration,
   );
 
-  displayVisualization(cycleDurationMinutes, cycleCoefficient);
+  const totalLongBreakTime = helper.floorToMultipleOf(
+    longBreakDuration * (Math.floor(cycleCoefficient) - 1),
+    longBreakDuration,
+  );
+
+  displayVisualization(totalFocusTime, totalShortBreakTime, totalLongBreakTime);
 }
 
-function displayVisualization(cycleDurationMinutes, cycleCoefficient) {
-  //
+function displayVisualization(
+  totalFocusTime,
+  totalShortBreakTime,
+  totalLongBreakTime,
+) {
+  const unusedTime =
+    totalBlockDurationMinutes -
+    (totalFocusTime + totalShortBreakTime + totalLongBreakTime);
+
+  console.log(
+    `totalFocus: ${totalFocusTime}\ntotalShortBreak: ${totalShortBreakTime}\ntotalLongBreak: ${totalLongBreakTime}\nremainingTime: ${unusedTime}`,
+  );
+
+  const doughnut = document.getElementById("breakdownDoughnut");
+
+  const doughnutData = {
+    labels: ["Focus", "Long break", "Short break", "Unused time"],
+    datasets: [
+      {
+        label: "Minutes",
+        data: [
+          totalFocusTime,
+          totalLongBreakTime,
+          totalShortBreakTime,
+          unusedTime,
+        ],
+        backgroundColor: [
+          "rgb(60, 97, 30)",
+          "rgb(208, 50, 14)",
+          "rgb(255, 99, 71)",
+          "rgb(169, 169, 169)",
+        ],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  new Chart(doughnut, {
+    type: "doughnut",
+    data: doughnutData,
+  });
+
 }

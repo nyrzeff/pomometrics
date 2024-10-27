@@ -42,10 +42,10 @@ button {
   width: 25%;
 }
 
-#visualization-container {
+#chart-container {
   display: flex;
   gap: 10px;
   width: 100vw;
-  height: 5vw;
+  height: 30vw;
   place-content: center;
 }
