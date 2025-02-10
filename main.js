@@ -9,10 +9,32 @@ document.querySelectorAll(".slidercontainer").forEach((container) => {
   };
 });
 
+document
+  .getElementById("toggle-options")
+  .addEventListener("change", function () {
+    const additionalOptions = document.getElementById("additional-options");
+    additionalOptions.style.display = this.checked ? "block" : "none";
+  });
 
+document.querySelector("button").addEventListener("click", function () {
+  displayBreakdown();
+});
 
+function displayBreakdown() {
+  const amountOfPomodoros = parseInt(
+    document.getElementById("pomodoro-amount").value,
   );
+  const sessionDuration = parseInt(
+    document.getElementById("session-duration").value,
   );
+  const shortBreakDuration = parseInt(
+    document.getElementById("short-break-duration").value,
+  );
+  const longBreakDuration = parseInt(
+    document.getElementById("long-break-duration").value,
+  );
+  const sessionsPerCycle = parseInt(
+    document.getElementById("sessions-per-cycle").value,
   );
 
 
