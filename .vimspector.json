@@ -1,7 +1,7 @@
 {
   "configurations": {
-    "firefox": {
-      "adapter": "firefox",
+    "launch": {
+      "adapter": "chrome",
       "breakpoints": {
          "exception": {
             "all": "N",
@@ -11,8 +11,8 @@
       "configuration": {
         "request": "launch",
         "url": "http://localhost:3000/",
-        "webRoot": "${workspaceRoot}/www",
-        "reAttach": true
+        "webRoot": "${workspaceRoot}",
+        "reAttach": true,
       }
     }
   }
