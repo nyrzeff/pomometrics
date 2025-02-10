@@ -1,51 +1,149 @@
-html {
-  background-color: black;
-  color: white;
-  /* overflow-x: hidden; */
+/* variables */
+:root {
+  --primary: #f70d1a;
+  --secondary: #006400;
 }
 
-#form-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  gap: 10px;
-  width: 35vw;
-  align-items: center;
-  margin: auto;
-}
-
-#widget__header {
+/* reset */
+body {
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
-#start-time-container,
-#end-time-container {
-  justify-self: center;
-  align-self: center;
+/* base styles */
+header {
+  /* color: var(--secondary); */
 }
 
-#breaks-container {
-  display: flex;
-  gap: 10px;
+body {
+  background: #000f00;
+  color: white;
+  overflow-x: hidden;
 }
 
-#short-break-duration,
-#long-break-duration {
-  flex-shrink: 1;
-  min-width: 0px;
-  width: 50%;
+/* fonts */
+
+/* mobile styles */
+.input {
+  line-height: 30px;
+  overflow-x: hidden;
 }
 
 button {
-  grid-column: 1 / span 2;
-  place-self: center;
-  margin-top: 1rem;
-  width: 25%;
+  border-radius: 5px;
+  background-color: none;
+  border: 2px solid black;
+  margin-top: 15px;
 }
 
-#chart-container {
-  display: flex;
-  gap: 10px;
-  width: 100vw;
-  height: 30vw;
-  place-content: center;
+/* find a way to scale everything up so it looks good on mobile */
+.input {
+  /* scale: 1.2; */
 }
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  /* width: 100%; */
+  cursor: pointer;
+  height: 6px;
+  border-radius: 15px;
+  background: #ccc;
+  outline: none;
+  opacity: 0.7;
+}
+
+.slider:hover {
+  opacity: 0.9;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  transition: 0.2s ease-in-out;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--secondary);
+}
+
+#pomodoro-amount::-webkit-slider-thumb {
+  background-color: var(--primary);
+}
+
+#pomodoro-amount::-moz-range-thumb {
+  background-color: var(--primary);
+}
+
+.charts {
+  margin: 30px;
+  max-width: 75vw;
+}
+
+#chart1 {
+
+#chart2 {
+}
+
+/* small tablet styles */
+@media screen and (min-width: 620px) {
+}
+
+/* large tablet and laptop styles */
+@media screen and (min-width: 960px) {
+}
+
+/* desktop styles */
+@media screen and (min-width: 1200px) {
+}
+
+/* html { */
+/*   background-color: black; */
+/*   color: white; */
+/*   /1* overflow-x: hidden; *1/ */
+/* } */
+
+/* #form-container { */
+/*   display: grid; */
+/*   grid-template-columns: 50% 50%; */
+/*   gap: 10px; */
+/*   width: 35vw; */
+/*   align-items: center; */
+/*   margin: auto; */
+/* } */
+
+/* #widget-header { */
+/*   text-align: center; */
+/* } */
+
+/* #short-break-duration, */
+/* #long-break-duration { */
+/*   flex-shrink: 1; */
+/*   min-width: 0px; */
+/*   width: 50%; */
+/* } */
+
+/* button { */
+/*   grid-column: 1 / span 2; */
+/*   place-self: center; */
+/*   margin-top: 1rem; */
+/*   width: 25%; */
+/* } */
+
+/* #chart-container { */
+/*   display: flex; */
+/*   gap: 10px; */
+/*   width: 100vw; */
+/*   height: 30vw; */
+/*   place-content: center; */
+/* } */
