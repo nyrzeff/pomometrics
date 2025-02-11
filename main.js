@@ -1,6 +1,3 @@
-import Chart from "chart.js/auto";
-// import * as helper from "helper.mjs";
-
 document.querySelectorAll(".slidercontainer").forEach((container) => {
   const slider = container.querySelector("input");
   const output = container.querySelector("output");
