@@ -46,6 +46,18 @@ function displayBreakdown() {
 
   const totalHours = (focusTime + shortBreakTime + longBreakTime) / 60;
 
+  createDoughnutChart(focusTime, shortBreakTime, longBreakTime);
+
+  createStackedBarChart(
+    totalHours,
+    sessionDuration,
+    shortBreakDuration,
+    longBreakDuration,
+    sessionsPerCycle,
+  );
+}
+
+function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
   const doughnut = document.getElementById("chart1");
 
   const doughnutData = {
@@ -79,9 +91,17 @@ function displayBreakdown() {
     },
     data: doughnutData,
   });
+}
 
-  // chart 2
+function createStackedBarChart(
+  totalHours,
+  sessionDuration,
+  shortBreakDuration,
+  longBreakDuration,
+  sessionsPerCycle,
+) {
   const bar = document.getElementById("chart2");
+
   const labels = Array.from({ length: Math.ceil(totalHours) }, (_, i) =>
     (i + 1).toString(),
   );
