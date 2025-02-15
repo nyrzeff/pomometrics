@@ -102,8 +102,9 @@ function createStackedBarChart(
 ) {
   const bar = document.getElementById("chart2");
 
-  const labels = Array.from({ length: Math.ceil(totalHours) }, (_, i) =>
-    (i + 1).toString(),
+  const labels = Array.from(
+    { length: Math.ceil(totalHours) },
+    (_, i) => `${i}h-${i + 1}h`,
   );
 
   const hourlyBreakdown = calculateHourlyBreakdown(
@@ -180,7 +181,7 @@ function calculateHourlyBreakdown(
   totalHours,
 ) {
   const hourlyBreakdown = [];
-  let totalMinutes = totalHours * 60;
+  let totalMinutes = Math.floor(totalHours * 60);
   let totalProcessedMinutes = 0,
     remainingMinutesInHour = 60;
   let focus = 0,
@@ -190,6 +191,7 @@ function calculateHourlyBreakdown(
     shortBreakRemainder = 0,
     longBreakRemainder = 0;
   let sessionCount = 0;
+
 
   while (totalProcessedMinutes < totalMinutes) {
     if (remainingMinutesInHour > 0 && totalProcessedMinutes < totalMinutes) {
@@ -272,7 +274,8 @@ function calculateHourlyBreakdown(
       focus = 0;
       longBreak = 0;
       shortBreak = 0;
-      remainingMinutesInHour = 60;
+
+      if (totalProcessedMinutes <= totalMinutes) remainingMinutesInHour = 60;
     }
   }
   return hourlyBreakdown;
