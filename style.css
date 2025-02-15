@@ -5,6 +5,10 @@
 }
 
 /* reset */
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -24,10 +28,9 @@ body {
 
 /* fonts */
 
-/* mobile styles */
+/* mobile styles (320px-480px) */
 .input {
   line-height: 30px;
-  overflow-x: hidden;
 }
 
 button {
@@ -37,11 +40,7 @@ button {
   margin-top: 15px;
 }
 
-/* find a way to scale everything up so it looks good on mobile */
-.input {
-  /* scale: 1.2; */
-}
-
+/* custom sliders */
 .slider {
   -webkit-appearance: none;
   appearance: none;
@@ -86,25 +85,33 @@ button {
 }
 
 .charts {
-  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: auto;
   max-width: 75vw;
 }
 
 #chart1 {
+  margin-bottom: 10px;
 }
 
 #chart2 {
 }
 
 /* small tablet styles */
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 480px) {
 }
 
 /* large tablet and laptop styles */
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 768px) {
 }
 
 /* desktop styles */
+@media screen and (min-width: 1024px) {
+}
+
+/* XL+ screen styles */
 @media screen and (min-width: 1200px) {
 }
 

@@ -66,6 +66,17 @@ function displayBreakdown() {
 
   new Chart(doughnut, {
     type: "doughnut",
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: "Total breakdown",
+        },
+        legend: {
+          position: "top",
+        },
+      },
+    },
     data: doughnutData,
   });
 
@@ -113,7 +124,7 @@ function displayBreakdown() {
       plugins: {
         title: {
           display: true,
-          text: "Stacked bar breakdown",
+          text: "Hourly breakdown",
         },
         legend: {
           position: "top",
