@@ -12,7 +12,7 @@
         "request": "launch",
         "url": "http://localhost:3000/",
         "webRoot": "${workspaceRoot}",
-        "reAttach": true,
+        "reAttach": true
       }
     }
   }
