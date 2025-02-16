@@ -57,10 +57,14 @@ function displayBreakdown() {
   );
 }
 
-function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
-  const doughnut = document.getElementById("chart1");
+let doughnut, bar;
 
-  const doughnutData = {
+function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
+  const ctx = document.getElementById("chart1").getContext("2d");
+
+  if (doughnut) doughnut.destroy();
+
+  const data = {
     labels: ["Focus", "Long break", "Short break"],
     datasets: [
       {
@@ -76,7 +80,7 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
     ],
   };
 
-  new Chart(doughnut, {
+  const config = {
     type: "doughnut",
     options: {
       plugins: {
@@ -89,8 +93,10 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
         },
       },
     },
-    data: doughnutData,
-  });
+    data: data,
+  };
+
+  doughnut = new Chart(ctx, config);
 }
 
 function createStackedBarChart(
@@ -100,7 +106,10 @@ function createStackedBarChart(
   longBreakDuration,
   sessionsPerCycle,
 ) {
-  const bar = document.getElementById("chart2");
+  const ctx = document.getElementById("chart2").getContext("2d");
+
+  if (bar) bar.destroy();
+
 
   const labels = Array.from(
     { length: Math.ceil(totalHours) },
@@ -138,7 +147,7 @@ function createStackedBarChart(
     ],
   };
 
-  new Chart(bar, {
+  const config = {
     type: "bar",
     data: barData,
     options: {
@@ -170,7 +179,9 @@ function createStackedBarChart(
         },
       },
     },
-  });
+  };
+
+  bar = new Chart(ctx, config);
 }
 
 function calculateHourlyBreakdown(
