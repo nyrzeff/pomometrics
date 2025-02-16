@@ -37,6 +37,7 @@ document
   });
 
 document.querySelector("button").addEventListener("click", function () {
+  document.getElementById("charts").style.display = "flex";
   displayBreakdown();
 });
 
