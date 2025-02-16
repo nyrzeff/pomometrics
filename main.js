@@ -1,3 +1,25 @@
+window.onload = function () {
+  const amountOfPomodoros = document.getElementById("pomodoro-amount");
+  const sessionDuration = document.getElementById("session-duration");
+  const shortBreakDuration = document.getElementById("short-break-duration");
+  const longBreakDuration = document.getElementById("long-break-duration");
+  const sessionsPerCycle = document.getElementById("sessions-per-cycle");
+
+  amountOfPomodoros.value = amountOfPomodoros.getAttribute(
+    "data-original-value",
+  );
+  sessionDuration.value = sessionDuration.getAttribute("data-original-value");
+  shortBreakDuration.value = shortBreakDuration.getAttribute(
+    "data-original-value",
+  );
+  longBreakDuration.value = longBreakDuration.getAttribute(
+    "data-original-value",
+  );
+  sessionsPerCycle.value = sessionsPerCycle.getAttribute("data-original-value");
+
+  document.getElementById("toggle-options").checked = false;
+};
+
 document.querySelectorAll(".slidercontainer").forEach((container) => {
   const slider = container.querySelector("input");
   const output = container.querySelector("output");
