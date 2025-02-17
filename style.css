@@ -29,6 +29,10 @@ body {
 /* fonts */
 
 /* mobile styles (320px-480px) */
+body {
+  padding: 0 7vw 0 7vw;
+}
+
 .input {
   line-height: 30px;
 }
@@ -44,7 +48,6 @@ button {
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  /* width: 100%; */
   cursor: pointer;
   height: 6px;
   border-radius: 15px;
@@ -87,7 +90,7 @@ button {
 #charts {
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 5vw;
   margin: auto;
   max-width: 75vw;
 }
@@ -96,7 +99,8 @@ button {
   margin-bottom: 10px;
 }
 
-#chart2 {
+hr {
+  width: 50%;
 }
 
 /* small tablet styles */
