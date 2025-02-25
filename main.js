@@ -215,7 +215,7 @@ function calculateHourlyBreakdown(
   totalHours,
 ) {
   const hourlyBreakdown = [];
-  let totalMinutes = Math.floor(totalHours * 60);
+  let totalMinutes = Math.round(totalHours * 60);
   let totalProcessedMinutes = 0,
     remainingMinutesInHour = 60;
   let focus = 0,
