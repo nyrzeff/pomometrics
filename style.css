@@ -1,7 +1,8 @@
 /* variables */
 :root {
-  --primary: #f70d1a;
-  --secondary: #006400;
+  --primary: #000f00;
+  --secondary: #f70d1a;
+  --tertiary: #006400;
 }
 
 /* reset */
@@ -9,27 +10,20 @@ html {
   overflow-x: hidden;
 }
 
-body {
+body * {
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
 /* base styles */
-header {
-  /* color: var(--secondary); */
-}
-
 body {
-  background: #000f00;
+  background: var(--primary);
   color: white;
   overflow-x: hidden;
 }
 
-/* fonts */
-
-/* mobile styles (320px-480px) */
-body {
+main {
   padding: 0 7vw 0 7vw;
 }
 
@@ -42,6 +36,50 @@ button {
   background-color: none;
   border: 2px solid black;
   margin-top: 15px;
+}
+
+/* checkbox */
+.checkbox-container {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.checkbox-container + .checkbox-container {
+  margin-top: 1em;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--tertiary);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
 }
 
 /* custom sliders */
@@ -67,7 +105,7 @@ button {
   height: 15px;
   border: none;
   border-radius: 50%;
-  background-color: var(--secondary);
+  background-color: var(--tertiary);
   transition: 0.2s ease-in-out;
 }
 
@@ -76,86 +114,21 @@ button {
   height: 15px;
   border: none;
   border-radius: 50%;
-  background-color: var(--secondary);
+  background-color: var(--tertiary);
 }
 
 #pomodoro-amount::-webkit-slider-thumb {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 #pomodoro-amount::-moz-range-thumb {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
-#charts {
+#chart-container {
   display: flex;
   flex-direction: column;
   padding: 5vw;
   margin: auto;
   max-width: 75vw;
 }
-
-#chart1 {
-  margin-bottom: 10px;
-}
-
-hr {
-  width: 50%;
-}
-
-/* small tablet styles */
-@media screen and (min-width: 480px) {
-}
-
-/* large tablet and laptop styles */
-@media screen and (min-width: 768px) {
-}
-
-/* desktop styles */
-@media screen and (min-width: 1024px) {
-}
-
-/* XL+ screen styles */
-@media screen and (min-width: 1200px) {
-}
-
-/* html { */
-/*   background-color: black; */
-/*   color: white; */
-/*   /1* overflow-x: hidden; *1/ */
-/* } */
-
-/* #form-container { */
-/*   display: grid; */
-/*   grid-template-columns: 50% 50%; */
-/*   gap: 10px; */
-/*   width: 35vw; */
-/*   align-items: center; */
-/*   margin: auto; */
-/* } */
-
-/* #widget-header { */
-/*   text-align: center; */
-/* } */
-
-/* #short-break-duration, */
-/* #long-break-duration { */
-/*   flex-shrink: 1; */
-/*   min-width: 0px; */
-/*   width: 50%; */
-/* } */
-
-/* button { */
-/*   grid-column: 1 / span 2; */
-/*   place-self: center; */
-/*   margin-top: 1rem; */
-/*   width: 25%; */
-/* } */
-
-/* #chart-container { */
-/*   display: flex; */
-/*   gap: 10px; */
-/*   width: 100vw; */
-/*   height: 30vw; */
-/*   place-content: center; */
-/* } */

@@ -17,7 +17,7 @@ window.onload = function () {
   );
   sessionsPerCycle.value = sessionsPerCycle.getAttribute("data-original-value");
 
-  document.getElementById("toggle-options").checked = false;
+  document.querySelector("input[type='checkbox']").checked = false;
 };
 
 document.querySelectorAll(".slidercontainer").forEach((container) => {
@@ -30,14 +30,14 @@ document.querySelectorAll(".slidercontainer").forEach((container) => {
 });
 
 document
-  .getElementById("toggle-options")
+  .querySelector("input[type='checkbox']")
   .addEventListener("change", function () {
     const additionalOptions = document.getElementById("additional-options");
     additionalOptions.style.display = this.checked ? "block" : "none";
   });
 
 document.querySelector("button").addEventListener("click", function () {
-  document.getElementById("charts").style.display = "flex";
+  document.getElementById("chart-container").style.display = "flex";
   displayBreakdown();
 });
 
