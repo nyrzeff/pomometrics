@@ -14,33 +14,30 @@
         <h2>The ultimate Pomodoro technique calculator</h2>
       </header>
       <section class="input">
-        <div class="slidercontainer">
-          <label for="pomodoro-amount">Amount of pomodoros</label>
+        <div class="slider-container">
+          <label for="pomodoro-amount-slider">Amount of pomodoros</label>
           <input
             type="range"
-            class="slider"
-            id="pomodoro-amount"
-            name="pomodoro-amount"
+            id="pomodoro-amount-slider"
+            data-id="pomodoro-amount"
             value="4"
             data-original-value="4"
             min="1"
             max="30"
             step="1"
           />
-          <output for="pomodoro-amount">4</output>
+          <output for="pomodoro-amount-slider">4</output>
         </div>
         <label class="checkbox-container">
           Display additional options?
-          <input type="checkbox" name="checkbox" />
+          <input type="checkbox" />
         </label>
-        <div id="additional-options" style="display: none;">
-          <div class="slidercontainer">
+        <div data-id="additional-options" style="display: none;">
+          <div class="slider-container">
              <label for="session-duration">Session duration</label>
              <input
                type="range"
-               class="slider"
-               id="session-duration"
-               name="session-duration"
+               data-id="session-duration"
                value="25"
                data-original-value="25"
                min="5"
@@ -49,13 +46,11 @@
              />
              <output for="session-duration">25</output>
           </div>
-          <div class="slidercontainer">
+          <div class="slider-container">
              <label for="short-break-duration">Short break</label>
              <input
                type="range"
-               class="slider"
-               id="short-break-duration"
-               name="short-break-duration"
+               data-id="short-break-duration"
                value="5"
                data-original-value="5"
                min="5"
@@ -64,13 +59,11 @@
              />
              <output for="short-break-duration">5</output>
           </div>
-          <div class="slidercontainer">
+          <div class="slider-container">
              <label for="long-break-duration">Long break</label>
              <input
                type="range"
-               class="slider"
-               id="long-break-duration"
-               name="long-break-duration"
+               data-id="long-break-duration"
                value="20"
                data-original-value="20"
                min="5"
@@ -79,13 +72,11 @@
              />
              <output for="long-break-duration">20</output>
           </div>
-          <div class="slidercontainer">
+          <div class="slider-container">
              <label for="sessions-per-cycle">Sessions per cycle</label>
              <input
                type="range"
-               class="slider"
-               id="sessions-per-cycle"
-               name="sessions-per-cycle"
+               data-id="sessions-per-cycle"
                placeholder="Sessions per cycle"
                value="4"
                data-original-value="4"
@@ -99,9 +90,9 @@
       </section>
       <button type="button">Display breakdown</button>
       <section id="chart-container" style="display: none;">
-        <canvas id="chart1"></canvas>
+        <canvas data-id="chart1"></canvas>
         <hr>
-        <canvas id="chart2"></canvas>
+        <canvas data-id="chart2"></canvas>
       </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>

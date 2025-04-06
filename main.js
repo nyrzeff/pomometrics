@@ -1,9 +1,20 @@
 window.onload = function () {
-  const amountOfPomodoros = document.getElementById("pomodoro-amount");
-  const sessionDuration = document.getElementById("session-duration");
-  const shortBreakDuration = document.getElementById("short-break-duration");
-  const longBreakDuration = document.getElementById("long-break-duration");
-  const sessionsPerCycle = document.getElementById("sessions-per-cycle");
+  const amountOfPomodoros = document.querySelector(
+    '[data-id="pomodoro-amount"]',
+  );
+  const sessionDuration = document.querySelector(
+    '[data-id="session-duration"]',
+  );
+  const shortBreakDuration = document.querySelector(
+    '[data-id="short-break-duration"]',
+  );
+
+  const longBreakDuration = document.querySelector(
+    '[data-id="long-break-duration"]',
+  );
+  const sessionsPerCycle = document.querySelector(
+    '[data-id="sessions-per-cycle"]',
+  );
 
   amountOfPomodoros.value = amountOfPomodoros.getAttribute(
     "data-original-value",
@@ -20,7 +31,7 @@ window.onload = function () {
   document.querySelector("input[type='checkbox']").checked = false;
 };
 
-document.querySelectorAll(".slidercontainer").forEach((container) => {
+document.querySelectorAll(".slider-container").forEach((container) => {
   const slider = container.querySelector("input");
   const output = container.querySelector("output");
 
@@ -32,7 +43,9 @@ document.querySelectorAll(".slidercontainer").forEach((container) => {
 document
   .querySelector("input[type='checkbox']")
   .addEventListener("change", function () {
-    const additionalOptions = document.getElementById("additional-options");
+    const additionalOptions = document.querySelector(
+      '[data-id="additional-options"]',
+    );
     additionalOptions.style.display = this.checked ? "block" : "none";
   });
 
@@ -43,19 +56,19 @@ document.querySelector("button").addEventListener("click", function () {
 
 function displayBreakdown() {
   const amountOfPomodoros = parseInt(
-    document.getElementById("pomodoro-amount").value,
+    document.querySelector('[data-id="pomodoro-amount"]').value,
   );
   const sessionDuration = parseInt(
-    document.getElementById("session-duration").value,
+    document.querySelector('[data-id="session-duration"]').value,
   );
   const shortBreakDuration = parseInt(
-    document.getElementById("short-break-duration").value,
+    document.querySelector('[data-id="short-break-duration"]').value,
   );
   const longBreakDuration = parseInt(
-    document.getElementById("long-break-duration").value,
+    document.querySelector('[data-id="long-break-duration"]').value,
   );
   const sessionsPerCycle = parseInt(
-    document.getElementById("sessions-per-cycle").value,
+    document.querySelector('[data-id="sessions-per-cycle"]').value,
   );
 
   const focusTime = sessionDuration * amountOfPomodoros;
@@ -83,7 +96,7 @@ function displayBreakdown() {
 let doughnut, bar;
 
 function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
-  const ctx = document.getElementById("chart1").getContext("2d");
+  const ctx = document.querySelector('[data-id="chart1"]').getContext("2d");
 
   if (doughnut) doughnut.destroy();
 
@@ -129,7 +142,7 @@ function createStackedBarChart(
   longBreakDuration,
   sessionsPerCycle,
 ) {
-  const ctx = document.getElementById("chart2").getContext("2d");
+  const ctx = document.querySelector('[data-id="chart2"]').getContext("2d");
 
   if (bar) bar.destroy();
 

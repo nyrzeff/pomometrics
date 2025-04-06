@@ -17,6 +17,10 @@ body * {
 }
 
 /* base styles */
+html {
+  font-family: system-ui, sans-serif;
+}
+
 body {
   background: var(--background);
   color: white;
@@ -55,7 +59,7 @@ button {
 input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #fff;
+  background-color: var(--background);
   margin: 0;
   font: inherit;
   color: currentColor;
@@ -89,45 +93,60 @@ input[type="checkbox"]:focus {
 }
 
 /* custom sliders */
-.slider {
+.slider-container > input {
+  font-size: clamp(1rem, 5vw, 1.5rem);
+}
+
+input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
-  height: 6px;
-  border-radius: 15px;
+  border-radius: 1em;
   background: #ccc;
   outline: none;
   opacity: 0.7;
 }
 
-.slider:hover {
+input[type="range"]:hover {
   opacity: 0.9;
 }
 
-.slider::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 15px;
-  height: 15px;
+  cursor: pointer;
+  width: 1.2em;
+  height: 1.2em;
   border: none;
-  border-radius: 50%;
+  border-radius: 1em;
   background-color: var(--tomato-green);
   transition: 0.2s ease-in-out;
 }
 
-.slider::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
+input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  cursor: pointer;
+  width: 1.3em;
+  height: 1.3em;
   border: none;
-  border-radius: 50%;
+  border-radius: 1em;
   background-color: var(--tomato-green);
+  transition: 0.2s ease-in-out;
 }
 
-#pomodoro-amount::-webkit-slider-thumb {
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.5);
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.5);
+}
+
+#pomodoro-amount-slider::-webkit-slider-thumb {
   background-color: var(--tomato-red);
 }
 
-#pomodoro-amount::-moz-range-thumb {
+#pomodoro-amount-slider::-moz-range-thumb {
   background-color: var(--tomato-red);
 }
 
