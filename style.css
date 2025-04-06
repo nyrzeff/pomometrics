@@ -1,8 +1,8 @@
 /* variables */
 :root {
-  --primary: #000f00;
-  --secondary: #f70d1a;
-  --tertiary: #006400;
+  --background: #000f00;
+  --tomato-red: #f70d1a;
+  --tomato-green: #006400;
 }
 
 /* reset */
@@ -18,7 +18,7 @@ body * {
 
 /* base styles */
 body {
-  background: var(--primary);
+  background: var(--background);
   color: white;
   overflow-x: hidden;
 }
@@ -38,14 +38,13 @@ button {
   margin-top: 15px;
 }
 
-/* checkbox */
+/* custom checkbox */
 .checkbox-container {
   font-family: system-ui, sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: clamp(1rem, 5vw, 2rem);
   line-height: 1.1;
   display: grid;
-  grid-template-columns: 1em auto;
+  grid-template-columns: auto 1em;
   gap: 0.5em;
 }
 
@@ -73,13 +72,20 @@ input[type="checkbox"]::before {
   content: "";
   width: 0.65em;
   height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   transform: scale(0);
+  transform-origin: bottom left;
   transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--tertiary);
+  box-shadow: inset 1em 1em var(--tomato-green);
 }
 
 input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
 }
 
 /* custom sliders */
@@ -105,7 +111,7 @@ input[type="checkbox"]:checked::before {
   height: 15px;
   border: none;
   border-radius: 50%;
-  background-color: var(--tertiary);
+  background-color: var(--tomato-green);
   transition: 0.2s ease-in-out;
 }
 
@@ -114,17 +120,18 @@ input[type="checkbox"]:checked::before {
   height: 15px;
   border: none;
   border-radius: 50%;
-  background-color: var(--tertiary);
+  background-color: var(--tomato-green);
 }
 
 #pomodoro-amount::-webkit-slider-thumb {
-  background-color: var(--secondary);
+  background-color: var(--tomato-red);
 }
 
 #pomodoro-amount::-moz-range-thumb {
-  background-color: var(--secondary);
+  background-color: var(--tomato-red);
 }
 
+/* charts */
 #chart-container {
   display: flex;
   flex-direction: column;
