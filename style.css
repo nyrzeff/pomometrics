@@ -27,25 +27,40 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  padding: 0 7vw 0 7vw;
+h1 {
+  font-size: clamp(2.5rem, 5vw, 10rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 10rem);
 }
 
 .input {
-  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-size: clamp(1.1rem, 3vw, 3rem);
+  line-height: 2;
+  padding: 0.1em 0;
 }
 
 button {
-  border-radius: 5px;
-  background-color: none;
-  border: 2px solid black;
-  margin-top: 15px;
+  cursor: pointer;
+  color: white;
+  background: radial-gradient(circle, black, var(--background));
+  font-size: clamp(1rem, 5vw, 2rem);
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  padding: 0.5em 2em;
 }
 
 /* custom checkbox */
 .checkbox-container {
   font-family: system-ui, sans-serif;
-  font-size: clamp(1rem, 5vw, 2rem);
+  font-size: clamp(1rem, 2vw, 3rem);
   line-height: 1.1;
   display: grid;
   grid-template-columns: auto 1em;
@@ -93,6 +108,14 @@ input[type="checkbox"]:focus {
 }
 
 /* custom sliders */
+.slider-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
 .slider-container > input {
   font-size: clamp(1rem, 5vw, 1.5rem);
 }
