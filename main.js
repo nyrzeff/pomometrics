@@ -121,6 +121,9 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
   const config = {
     type: "doughnut",
     options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 1,
       plugins: {
         title: {
           display: true,
@@ -189,6 +192,9 @@ function createStackedBarChart(
     type: "bar",
     data: barData,
     options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 1,
       plugins: {
         title: {
           display: true,
@@ -198,7 +204,6 @@ function createStackedBarChart(
           position: "top",
         },
       },
-      responsive: true,
       scales: {
         x: {
           stacked: true,

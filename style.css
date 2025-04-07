@@ -227,7 +227,14 @@ input[type="range"]:active::-moz-range-thumb {
 #chart-container {
   display: flex;
   flex-direction: column;
-  padding: 5vw;
-  margin: auto;
-  max-width: 75vw;
+  gap: 1rem;
+  padding: 0 1rem 0 1rem;
+  margin-top: 15px;
+}
+
+hr {
+  margin: 20px auto;
+  width: 50%;
+}
+
 }
