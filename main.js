@@ -1,3 +1,5 @@
+import Chart from "chart.js/auto";
+
 window.onload = function () {
   const amountOfPomodoros = document.querySelector(
     '[data-id="pomodoro-amount"]',

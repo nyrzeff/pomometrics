@@ -9,6 +9,9 @@
       "preview": "vite preview",
       "test": "mocha 'test/**/test-*.*js'"
    },
+   "dependencies": {
+      "chart.js": "^4.4.8"
+   },
    "devDependencies": {
       "@eslint/js": "^9.24.0",
       "chai": "^5.2.0",
