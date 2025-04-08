@@ -52,7 +52,7 @@ document
   });
 
 document.querySelector("button").addEventListener("click", function () {
-  document.getElementById("chart-container").style.display = "flex";
+  document.querySelector(".chart-container").style.display = "flex";
   displayBreakdown();
 });
 
