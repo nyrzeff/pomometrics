@@ -52,7 +52,7 @@ document
   });
 
 document.querySelector("button").addEventListener("click", function () {
-  document.querySelector(".chart-container").style.display = "flex";
+  document.querySelector(".chart-section").style.display = "flex";
   displayBreakdown();
 });
 
@@ -122,8 +122,7 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
     type: "doughnut",
     options: {
       responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: 1,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
@@ -193,8 +192,7 @@ function createStackedBarChart(
     data: barData,
     options: {
       responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: 1,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
