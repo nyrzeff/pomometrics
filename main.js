@@ -52,7 +52,7 @@ document
   });
 
 document.querySelector("button").addEventListener("click", function () {
-  document.getElementById("chart-container").style.display = "flex";
+  document.querySelector(".chart-section").style.display = "flex";
   displayBreakdown();
 });
 
@@ -108,11 +108,7 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
       {
         label: "Minutes",
         data: [focusTime, longBreakTime, shortBreakTime],
-        backgroundColor: [
-          "rgb(60, 97, 30)",
-          "rgb(208, 50, 14)",
-          "rgb(255, 99, 71)",
-        ],
+        backgroundColor: ["#006400", "#f70d1a", "#ff6347"],
         hoverOffset: 4,
       },
     ],
@@ -121,10 +117,16 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
   const config = {
     type: "doughnut",
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      borderColor: "#000f00",
       plugins: {
         title: {
           display: true,
           text: "Total breakdown",
+          font: {
+            size: 24,
+          },
         },
         legend: {
           position: "top",
@@ -148,7 +150,6 @@ function createStackedBarChart(
 
   if (bar) bar.destroy();
 
-
   const labels = Array.from(
     { length: Math.ceil(totalHours) },
     (_, i) => `${i}h-${i + 1}h`,
@@ -170,17 +171,17 @@ function createStackedBarChart(
       {
         label: "Focus",
         data: hourlyBreakdown.map((e) => e.focusTime),
-        backgroundColor: "rgb(60, 97, 30)",
+        backgroundColor: "#006400",
       },
       {
         label: "Long break",
         data: hourlyBreakdown.map((e) => e.longBreakTime),
-        backgroundColor: "rgb(208, 50, 14)",
+        backgroundColor: "#f70d1a",
       },
       {
         label: "Short break",
         data: hourlyBreakdown.map((e) => e.shortBreakTime),
-        backgroundColor: "rgb(255, 99, 71)",
+        backgroundColor: "#ff6347",
       },
     ],
   };
@@ -189,16 +190,21 @@ function createStackedBarChart(
     type: "bar",
     data: barData,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      borderColor: "#000f00",
       plugins: {
         title: {
           display: true,
           text: "Hourly breakdown",
+          font: {
+            size: 24,
+          },
         },
         legend: {
           position: "top",
         },
       },
-      responsive: true,
       scales: {
         x: {
           stacked: true,
@@ -240,7 +246,6 @@ function calculateHourlyBreakdown(
     shortBreakRemainder = 0,
     longBreakRemainder = 0;
   let sessionCount = 0;
-
 
   while (totalProcessedMinutes < totalMinutes) {
     if (remainingMinutesInHour > 0 && totalProcessedMinutes < totalMinutes) {

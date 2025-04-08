@@ -93,10 +93,13 @@
         </div>
         <button type="button">Breakdown!</button>
       </section>
-      <section id="chart-container" style="display: none">
-        <canvas data-id="chart1"></canvas>
-        <hr />
-        <canvas data-id="chart2"></canvas>
+      <section class="chart-section" style="display: none">
+        <div class="chart-container">
+          <canvas data-id="chart1" class="chart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas data-id="chart2" class="chart"></canvas>
+        </div>
       </section>
     </main>
     <script type="module" src="main.js"></script>
