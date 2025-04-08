@@ -123,10 +123,14 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      borderColor: "#000f00",
       plugins: {
         title: {
           display: true,
           text: "Total breakdown",
+          font: {
+            size: 24,
+          },
         },
         legend: {
           position: "top",
@@ -149,7 +153,6 @@ function createStackedBarChart(
   const ctx = document.querySelector('[data-id="chart2"]').getContext("2d");
 
   if (bar) bar.destroy();
-
 
   const labels = Array.from(
     { length: Math.ceil(totalHours) },
@@ -193,10 +196,14 @@ function createStackedBarChart(
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      borderColor: "#000f00",
       plugins: {
         title: {
           display: true,
           text: "Hourly breakdown",
+          font: {
+            size: 24,
+          },
         },
         legend: {
           position: "top",
@@ -243,7 +250,6 @@ function calculateHourlyBreakdown(
     shortBreakRemainder = 0,
     longBreakRemainder = 0;
   let sessionCount = 0;
-
 
   while (totalProcessedMinutes < totalMinutes) {
     if (remainingMinutesInHour > 0 && totalProcessedMinutes < totalMinutes) {
