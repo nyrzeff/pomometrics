@@ -25,6 +25,8 @@ Chart.register(
   Tooltip,
 );
 
+import { debounceLeading } from "./helper.mjs";
+
 window.onload = function () {
   const amountOfPomodoros = document.querySelector(
     '[data-id="pomodoro-amount"]',
@@ -76,10 +78,19 @@ document
     additionalOptions.style.display = this.checked ? "block" : "none";
   });
 
-document.querySelector("button").addEventListener("click", function () {
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const button = document.querySelector("button");
+    if (button) button.click();
+  }
+});
+
+const handleClick = debounceLeading(() => {
   document.querySelector(".chart-section").style.display = "flex";
   displayBreakdown();
-});
+}, 500);
+
+document.querySelector("button").addEventListener("click", handleClick);
 
 function displayBreakdown() {
   const amountOfPomodoros = parseInt(
