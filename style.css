@@ -53,6 +53,10 @@ main {
   -ms-overflow-style: none;
 }
 
+main::-webkit-scrollbar {
+  display: none;
+}
+
 h1 {
   font-size: clamp(2.5rem, 5vw, 10rem);
 }
