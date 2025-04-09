@@ -1,4 +1,29 @@
-import Chart from "chart.js/auto";
+import {
+  Chart,
+  BarController,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  DoughnutController,
+  ArcElement,
+  Title,
+  SubTitle,
+  Legend,
+  Tooltip,
+} from "chart.js";
+
+Chart.register(
+  BarController,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  DoughnutController,
+  ArcElement,
+  Title,
+  SubTitle,
+  Legend,
+  Tooltip,
+);
 
 window.onload = function () {
   const amountOfPomodoros = document.querySelector(
