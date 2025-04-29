@@ -75,7 +75,7 @@ document
     const additionalOptions = document.querySelector(
       '[data-id="additional-options"]',
     );
-    additionalOptions.style.display = this.checked ? "block" : "none";
+    additionalOptions.style.display = this.checked ? "flex" : "none";
   });
 
 document.addEventListener("keydown", function (e) {

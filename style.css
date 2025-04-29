@@ -4,6 +4,7 @@
   --background-card: #000f00;
   --tomato-red: #f70d1a;
   --tomato-green: #006400;
+  --fluid-size: clamp(1rem, 2vw + 1rem, 2rem);
 }
 
 /* reset */
@@ -41,11 +42,10 @@ body {
 
 main {
   background-color: var(--background-card);
-  border: 3px solid #ccc;
-  border-radius: 3em;
   margin: 0 0.5dvh;
   padding: 1em;
   height: 100dvh;
+  font-size: var(--fluid-size);
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
@@ -58,11 +58,11 @@ main::-webkit-scrollbar {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 10rem);
+  font-size: 2.5em;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 2.5vw, 10rem);
+  font-size: 1.25em;
   margin: 0 0 10px 0;
 }
 
@@ -72,39 +72,41 @@ h2 {
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
-  font-size: clamp(1.1rem, 3vw, 3rem);
-  padding: 0.1em 0;
+  font-size: 1em;
+  margin-top: 1rem;
 }
 
 .unfold-additional-options {
-  line-height: 2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin: 10px 0;
 }
 
 button {
   animation: animateGradient 3s linear infinite;
   background:
     linear-gradient(var(--background-card), var(--background-card)) padding-box,
-    linear-gradient(
-        270deg,
-        var(--tomato-red),
-        var(--tomato-green),
-        var(--tomato-red),
-        var(--tomato-green),
-        var(--tomato-red),
-        var(--tomato-green),
-        var(--tomato-red)
-      )
-      border-box;
+    linear-gradient(270deg,
+      var(--tomato-red),
+      var(--tomato-green),
+      var(--tomato-red),
+      var(--tomato-green),
+      var(--tomato-red),
+      var(--tomato-green),
+      var(--tomato-red)) border-box;
   background-size: 400% 400%;
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
   border: 4px solid transparent;
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 30px;
+  padding: 1rem;
   color: white;
   cursor: pointer;
-  font-size: clamp(1rem, 5vw, 2rem);
+  font-size: 1em;
   transition: background-position 0.3s ease;
 }
 
@@ -112,6 +114,7 @@ button {
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 100% 50%;
   }
@@ -120,14 +123,14 @@ button {
 /* custom checkbox */
 .checkbox-container {
   font-family: system-ui, sans-serif;
-  font-size: clamp(1rem, 2vw, 3rem);
+  font-size: 1em;
   line-height: 1.1;
   display: grid;
   grid-template-columns: auto 1em;
   gap: 0.5em;
 }
 
-.checkbox-container + .checkbox-container {
+.checkbox-container+.checkbox-container {
   margin-top: 1em;
 }
 
@@ -176,8 +179,8 @@ input[type="checkbox"]:focus {
   align-items: center;
 }
 
-.slider-container > input {
-  font-size: clamp(1rem, 5vw, 1.5rem);
+.slider-container>input {
+  font-size: 1em;
 }
 
 input[type="range"] {
