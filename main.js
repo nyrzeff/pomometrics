@@ -199,8 +199,6 @@ function createStackedBarChart(
     totalHours,
   );
 
-  console.log(hourlyBreakdown);
-
   const barData = {
     labels: labels,
     datasets: [
