@@ -4,7 +4,7 @@
   --background-card: #000f00;
   --tomato-red: #f70d1a;
   --tomato-green: #006400;
-  --fluid-size: clamp(1rem, 2vw + 1rem, 2rem);
+  --fluid-size: clamp(1rem, 2vw + 0.5rem, 2rem);
 }
 
 /* reset */
@@ -42,7 +42,6 @@ body {
 
 main {
   background-color: var(--background-card);
-  margin: 0 0.5dvh;
   padding: 1em;
   height: 100dvh;
   font-size: var(--fluid-size);
@@ -70,8 +69,9 @@ h2 {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
+
   font-size: 1em;
   margin-top: 1rem;
 }
@@ -81,8 +81,6 @@ h2 {
   justify-content: center;
   align-items: center;
   gap: 10px;
-
-  margin: 10px 0;
 }
 
 button {
@@ -172,15 +170,30 @@ input[type="checkbox"]:focus {
 
 /* custom sliders */
 .slider-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
+  display: grid;
+  grid-template-areas:
+    ". label ."
+    "input input output";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   align-items: center;
+  gap: 10px;
+
+  width: 70dvw;
+}
+
+.slider-container>label {
+  grid-area: label;
+  grid-column: 1 / -1;
 }
 
 .slider-container>input {
-  font-size: 1em;
+  grid-area: input;
+  font-size: 0.8em;
+}
+
+.slider-container>output {
+  grid-area: output;
 }
 
 input[type="range"] {
@@ -239,18 +252,18 @@ input[type="range"]:active::-moz-range-thumb {
 /* charts */
 .chart-section {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 3rem;
+
   margin-top: 3rem;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .chart-container {
   flex: 1;
-  aspect-ratio: 9 / 16;
-  position: relative;
+  aspect-ratio: 1 / 1;
 }
 
 .chart {
@@ -259,11 +272,31 @@ input[type="range"]:active::-moz-range-thumb {
   display: block;
   border: solid #777;
   border-width: 0 1px;
-  border-radius: 5%;
-  padding: 0 1em;
+  border-radius: 30px;
+  padding: 0 10px;
 }
 
 @media (orientation: landscape) {
+  .checkbox-container {
+    margin: 10px 0;
+  }
+
+  .unfold-additional-options {
+    margin-bottom: 10px;
+  }
+
+  .slider-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .chart-section {
+    flex-direction: row;
+    padding: 0 3rem;
+  }
+
   .chart-container {
     aspect-ratio: 16 / 9;
   }
