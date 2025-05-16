@@ -1,7 +1,7 @@
 /* variables */
 :root {
   --background: #000100;
-  --background-card: #000f00;
+  --background-card: #0a0b0b;
   --tomato-red: #f70d1a;
   --tomato-green: #006400;
   --fluid-size: clamp(1rem, 2vw + 0.5rem, 2rem);
@@ -84,38 +84,18 @@ h2 {
 }
 
 button {
-  animation: animateGradient 3s linear infinite;
-  background:
-    linear-gradient(var(--background-card), var(--background-card)) padding-box,
-    linear-gradient(270deg,
-      var(--tomato-red),
-      var(--tomato-green),
-      var(--tomato-red),
-      var(--tomato-green),
-      var(--tomato-red),
-      var(--tomato-green),
-      var(--tomato-red)) border-box;
-  background-size: 400% 400%;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-
-  border: 4px solid transparent;
+  background: none;
+  border: 1px solid white;
   border-radius: 30px;
-  padding: 1rem;
+  padding: 1rem 3rem;
   color: white;
   cursor: pointer;
   font-size: 1em;
-  transition: background-position 0.3s ease;
+  font-weight: bold;
 }
 
-@keyframes animateGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  100% {
-    background-position: 100% 50%;
-  }
+button:hover {
+  transform: scale(1.03);
 }
 
 /* custom checkbox */
@@ -128,7 +108,7 @@ button {
   gap: 0.5em;
 }
 
-.checkbox-container+.checkbox-container {
+.checkbox-container + .checkbox-container {
   margin-top: 1em;
 }
 
@@ -182,17 +162,17 @@ input[type="checkbox"]:focus {
   width: 70dvw;
 }
 
-.slider-container>label {
+.slider-container > label {
   grid-area: label;
   grid-column: 1 / -1;
 }
 
-.slider-container>input {
+.slider-container > input {
   grid-area: input;
   font-size: 0.8em;
 }
 
-.slider-container>output {
+.slider-container > output {
   grid-area: output;
 }
 
