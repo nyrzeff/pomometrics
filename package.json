@@ -11,12 +11,12 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
-    "chart.js": "^4.4.9"
+    "chart.js": "^4.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.28.0",
-    "chai": "^5.2.0",
-    "eslint": "^9.28.0",
+    "@eslint/js": "^9.30.1",
+    "chai": "^5.2.1",
+    "eslint": "^9.30.1",
     "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
     "mocha": "^10.8.2",
