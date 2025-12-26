@@ -165,12 +165,12 @@ function createDoughnutChart(focusTime, longBreakTime, shortBreakTime) {
     if (doughnut) doughnut.destroy();
 
     const data = {
-        labels: ["Focus", "Long break", "Short break"],
+        labels: ["Focus", "Short break", "Long break"],
         datasets: [
             {
                 label: "Minutes",
                 data: [focusTime, longBreakTime, shortBreakTime],
-                backgroundColor: ["#006400", "#f70d1a", "#ff6347"],
+                backgroundColor: ["#006400", "#ff6347", "#f70d1a"],
                 hoverOffset: 4,
             },
         ],
