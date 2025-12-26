@@ -152,9 +152,9 @@ function displayBreakdown() {
     const final = document.querySelector(".recap");
     final.style.display = "block";
 
-    final.children[1].innerHTML += ` ${totalFocusTime}`;
-    final.children[2].innerHTML += ` ${totalShortBreakTime}`;
-    final.children[3].innerHTML += ` ${totalLongBreakTime}`;
+    final.children[1].innerHTML = `Focus sessions: ${totalFocusTime}`;
+    final.children[2].innerHTML = `Short breaks: ${totalShortBreakTime}`;
+    final.children[3].innerHTML = `Long breaks: ${totalLongBreakTime}`;
 }
 
 let doughnut, bar;
