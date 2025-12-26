@@ -1,108 +1,75 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.png?" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
     <title>Pomometrics</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <main>
-      <header>
-        <h1>Pomometrics</h1>
-        <h2>The ultimate Pomodoro technique calculator</h2>
-      </header>
-      <section class="input">
-        <div class="slider-container">
-          <label for="pomodoro-amount-slider">Amount of pomodoros</label>
-          <input
-            type="range"
-            id="pomodoro-amount-slider"
-            data-id="pomodoro-amount"
-            value="4"
-            data-original-value="4"
-            min="1"
-            max="30"
-            step="1"
-          />
-          <output for="pomodoro-amount-slider">4</output>
+        <header>
+            <h1>Pomometrics</h1>
+            <h2>The ultimate Pomodoro technique calculator</h2>
+        </header>
+        <section class="input">
+            <div class="slider-container">
+                <label for="pomodoro-amount-slider">Amount of pomodoros</label>
+                <input type="range" id="pomodoro-amount-slider" data-id="pomodoro-amount" value="4"
+                    data-original-value="4" min="1" max="30" step="1" />
+                <output for="pomodoro-amount-slider">4</output>
+            </div>
+            <label class="checkbox-container">
+                Additional options?
+                <input type="checkbox" />
+            </label>
+            <div class="unfold-additional-options" data-id="additional-options" style="display: none">
+                <div class="slider-container">
+                    <label for="session-duration">Session duration</label>
+                    <input type="range" data-id="session-duration" value="25" data-original-value="25" min="5" max="100"
+                        step="5" />
+                    <output for="session-duration">25</output>
+                </div>
+                <div class="slider-container">
+                    <label for="short-break-duration">Short break</label>
+                    <input type="range" data-id="short-break-duration" value="5" data-original-value="5" min="5"
+                        max="30" step="5" />
+                    <output for="short-break-duration">5</output>
+                </div>
+                <div class="slider-container">
+                    <label for="long-break-duration">Long break</label>
+                    <input type="range" data-id="long-break-duration" value="20" data-original-value="20" min="5"
+                        max="60" step="5" />
+                    <output for="long-break-duration">20</output>
+                </div>
+                <div class="slider-container">
+                    <label for="sessions-per-cycle">Sessions per cycle</label>
+                    <input type="range" data-id="sessions-per-cycle" placeholder="Sessions per cycle" value="4"
+                        data-original-value="4" min="1" max="10" step="1" />
+                    <output for="sessions-per-cycle">4</output>
+                </div>
+            </div>
+            <button type="button">Visualize</button>
+        </section>
+        <section class="chart-section" style="display: none">
+            <div class="chart-container">
+                <canvas data-id="chart1" class="chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas data-id="chart2" class="chart"></canvas>
+            </div>
+        </section>
+        <div class="recap" style="display: none">
+            <p>Total time spent</p>
+            <p>Focus sessions:</p>
+            <p>Short breaks:</p>
+            <p>Long breaks:</p>
         </div>
-        <label class="checkbox-container">
-          Additional options?
-          <input type="checkbox" />
-        </label>
-        <div
-          class="unfold-additional-options"
-          data-id="additional-options"
-          style="display: none"
-        >
-          <div class="slider-container">
-            <label for="session-duration">Session duration</label>
-            <input
-              type="range"
-              data-id="session-duration"
-              value="25"
-              data-original-value="25"
-              min="5"
-              max="100"
-              step="5"
-            />
-            <output for="session-duration">25</output>
-          </div>
-          <div class="slider-container">
-            <label for="short-break-duration">Short break</label>
-            <input
-              type="range"
-              data-id="short-break-duration"
-              value="5"
-              data-original-value="5"
-              min="5"
-              max="30"
-              step="5"
-            />
-            <output for="short-break-duration">5</output>
-          </div>
-          <div class="slider-container">
-            <label for="long-break-duration">Long break</label>
-            <input
-              type="range"
-              data-id="long-break-duration"
-              value="20"
-              data-original-value="20"
-              min="5"
-              max="60"
-              step="5"
-            />
-            <output for="long-break-duration">20</output>
-          </div>
-          <div class="slider-container">
-            <label for="sessions-per-cycle">Sessions per cycle</label>
-            <input
-              type="range"
-              data-id="sessions-per-cycle"
-              placeholder="Sessions per cycle"
-              value="4"
-              data-original-value="4"
-              min="1"
-              max="10"
-              step="1"
-            />
-            <output for="sessions-per-cycle">4</output>
-          </div>
-        </div>
-        <button type="button">Visualize</button>
-      </section>
-      <section class="chart-section" style="display: none">
-        <div class="chart-container">
-          <canvas data-id="chart1" class="chart"></canvas>
-        </div>
-        <div class="chart-container">
-          <canvas data-id="chart2" class="chart"></canvas>
-        </div>
-      </section>
     </main>
     <script type="module" src="main.js"></script>
-  </body>
+</body>
+
 </html>
