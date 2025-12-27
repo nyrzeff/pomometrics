@@ -15,7 +15,7 @@ export function debounceLeading(func, timeout = 300) {
 export function getHoursFromMinutes(minutes) {
     const full = minutes / 60;
     const h = Math.floor(full);
-    const m = Math.floor(full % 1 * 60);
+    const m = Math.round(full % 1 * 60);
 
     return `${h}h${m}min`;
 }
