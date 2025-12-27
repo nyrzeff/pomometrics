@@ -302,44 +302,53 @@ function calculateHourlyBreakdown(
     let focus = 0,
         shortBreak = 0,
         longBreak = 0;
-    let focusRemainder = 0,
+    let sessionRemainder = 0,
         shortBreakRemainder = 0,
         longBreakRemainder = 0;
     let sessionCount = 0;
 
     while (totalProcessedMinutes < totalMinutes) {
-        if (remainingMinutesInHour > 0 && totalProcessedMinutes < totalMinutes) {
-            if (sessionDuration > remainingMinutesInHour) {
-                focus += remainingMinutesInHour;
-                focusRemainder = sessionDuration - remainingMinutesInHour;
-                totalProcessedMinutes += remainingMinutesInHour;
-                remainingMinutesInHour = 0;
-            } else {
-                if (shortBreakRemainder === 0 && longBreakRemainder === 0) {
-                    if (focusRemainder > 0) {
-                        totalProcessedMinutes += focusRemainder;
-                        remainingMinutesInHour -= focusRemainder;
-                        focus += focusRemainder;
-                        focusRemainder = 0;
+        if (sessionDuration > remainingMinutesInHour && sessionRemainder === 0
+            && shortBreakRemainder === 0 && longBreakRemainder === 0) {
+            focus += remainingMinutesInHour;
+            totalProcessedMinutes += remainingMinutesInHour;
+            sessionRemainder += (sessionDuration - remainingMinutesInHour);
+            remainingMinutesInHour = 0;
+        } else {
+            if (shortBreakRemainder === 0 && longBreakRemainder === 0) {
+                if (sessionRemainder > 0) {
+                    if (sessionRemainder > remainingMinutesInHour) {
+                        focus += remainingMinutesInHour;
+                        totalProcessedMinutes += remainingMinutesInHour;
+                        sessionRemainder -= remainingMinutesInHour;
+                        remainingMinutesInHour = 0;
                     } else {
-                        totalProcessedMinutes += sessionDuration;
-                        remainingMinutesInHour -= sessionDuration;
-                        focus += sessionDuration;
+                        focus += sessionRemainder;
+                        remainingMinutesInHour -= sessionRemainder;
+                        totalProcessedMinutes += sessionRemainder;
+                        sessionRemainder = 0;
+                        sessionCount++;
                     }
+                } else {
+                    focus += sessionDuration;
+                    totalProcessedMinutes += sessionDuration;
+                    remainingMinutesInHour -= sessionDuration;
                     sessionCount++;
                 }
             }
         }
 
-        if (remainingMinutesInHour > 0 && totalProcessedMinutes < totalMinutes) {
+        if (remainingMinutesInHour > 0 &&
+            totalProcessedMinutes < totalMinutes) {
             if (sessionCount > 0 && sessionCount % sessionsPerCycle === 0) {
                 if (longBreakDuration > remainingMinutesInHour) {
                     longBreak += remainingMinutesInHour;
-                    longBreakRemainder = longBreakDuration - remainingMinutesInHour;
+                    longBreakRemainder =
+                        longBreakDuration - remainingMinutesInHour;
                     totalProcessedMinutes += remainingMinutesInHour;
                     remainingMinutesInHour = 0;
                 } else {
-                    if (shortBreakRemainder === 0 && focusRemainder === 0) {
+                    if (shortBreakRemainder === 0 && sessionRemainder === 0) {
                         if (longBreakRemainder > 0) {
                             totalProcessedMinutes += longBreakRemainder;
                             remainingMinutesInHour -= longBreakRemainder;
@@ -355,11 +364,12 @@ function calculateHourlyBreakdown(
             } else {
                 if (shortBreakDuration > remainingMinutesInHour) {
                     shortBreak += remainingMinutesInHour;
-                    shortBreakRemainder = shortBreakDuration - remainingMinutesInHour;
+                    shortBreakRemainder =
+                        shortBreakDuration - remainingMinutesInHour;
                     totalProcessedMinutes += remainingMinutesInHour;
                     remainingMinutesInHour = 0;
                 } else {
-                    if (longBreakRemainder === 0 && focusRemainder === 0) {
+                    if (longBreakRemainder === 0 && sessionRemainder === 0) {
                         if (shortBreakRemainder > 0) {
                             totalProcessedMinutes += shortBreakRemainder;
                             remainingMinutesInHour -= shortBreakRemainder;
@@ -389,7 +399,8 @@ function calculateHourlyBreakdown(
             longBreak = 0;
             shortBreak = 0;
 
-            if (totalProcessedMinutes <= totalMinutes) remainingMinutesInHour = 60;
+            if (totalProcessedMinutes < totalMinutes)
+                remainingMinutesInHour = 60;
         }
     }
     return hourlyBreakdown;
