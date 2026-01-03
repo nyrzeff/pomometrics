@@ -25,12 +25,9 @@ Chart.register(
     Tooltip,
 );
 
-import {
-    debounceLeading,
-    getHoursFromMinutes
-} from "./helper.mjs";
+import { debounceLeading, getHoursFromMinutes } from "./helper.mjs";
 
-window.onload = function() {
+window.onload = function () {
     const amountOfPomodoros = document.querySelector(
         '[data-id="pomodoro-amount"]',
     );
@@ -50,16 +47,16 @@ window.onload = function() {
     amountOfPomodoros.value = amountOfPomodoros.getAttribute(
         "data-original-value",
     );
-    sessionDuration.value =
-        sessionDuration.getAttribute("data-original-value");
+    sessionDuration.value = sessionDuration.getAttribute("data-original-value");
     shortBreakDuration.value = shortBreakDuration.getAttribute(
         "data-original-value",
     );
     longBreakDuration.value = longBreakDuration.getAttribute(
         "data-original-value",
     );
-    sessionsPerCycle.value =
-        sessionsPerCycle.getAttribute("data-original-value");
+    sessionsPerCycle.value = sessionsPerCycle.getAttribute(
+        "data-original-value",
+    );
 
     document.querySelector("input[type='checkbox']").checked = false;
 };
@@ -68,21 +65,21 @@ document.querySelectorAll(".slider-container").forEach((container) => {
     const slider = container.querySelector("input");
     const output = container.querySelector("output");
 
-    slider.oninput = function() {
+    slider.oninput = function () {
         output.innerHTML = this.value;
     };
 });
 
 document
     .querySelector("input[type='checkbox']")
-    .addEventListener("change", function() {
+    .addEventListener("change", function () {
         const additionalOptions = document.querySelector(
             '[data-id="additional-options"]',
         );
         additionalOptions.style.display = this.checked ? "flex" : "none";
     });
 
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
         const button = document.querySelector("button");
         if (button) button.click();
@@ -139,8 +136,7 @@ function displayBreakdown() {
     let totalLongBreakTime = `${longBreakTime}min`;
 
     if (focusTime > 60) {
-        totalFocusTime =
-            getHoursFromMinutes(focusTime);
+        totalFocusTime = getHoursFromMinutes(focusTime);
     }
     if (shortBreakTime > 60) {
         totalShortBreakTime = getHoursFromMinutes(shortBreakTime);
@@ -308,11 +304,15 @@ function calculateHourlyBreakdown(
     let sessionCount = 0;
 
     while (totalProcessedMinutes < totalMinutes) {
-        if (sessionDuration > remainingMinutesInHour && sessionRemainder === 0
-            && shortBreakRemainder === 0 && longBreakRemainder === 0) {
+        if (
+            sessionDuration > remainingMinutesInHour &&
+            sessionRemainder === 0 &&
+            shortBreakRemainder === 0 &&
+            longBreakRemainder === 0
+        ) {
             focus += remainingMinutesInHour;
             totalProcessedMinutes += remainingMinutesInHour;
-            sessionRemainder += (sessionDuration - remainingMinutesInHour);
+            sessionRemainder += sessionDuration - remainingMinutesInHour;
             remainingMinutesInHour = 0;
         } else {
             if (shortBreakRemainder === 0 && longBreakRemainder === 0) {
@@ -338,8 +338,10 @@ function calculateHourlyBreakdown(
             }
         }
 
-        if (remainingMinutesInHour > 0 &&
-            totalProcessedMinutes < totalMinutes) {
+        if (
+            remainingMinutesInHour > 0 &&
+            totalProcessedMinutes < totalMinutes
+        ) {
             if (sessionCount > 0 && sessionCount % sessionsPerCycle === 0) {
                 if (longBreakDuration > remainingMinutesInHour) {
                     longBreak += remainingMinutesInHour;
